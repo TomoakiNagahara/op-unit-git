@@ -83,7 +83,19 @@ class GitBranch implements IF_UNIT
 	 */
 	static function List()
 	{
-		return explode("\n", trim(`git branch`));
+		//	...
+		$return = [];
+		//	...
+		foreach( explode("\n", `git branch`) as $branch ){
+			//	...
+			if(empty($branch)){
+				continue;
+			}
+			//	...
+			$return[] = substr($branch, 2);
+		}
+		//	...
+		return $return;
 	}
 
 	/** Check if exists branch name.
