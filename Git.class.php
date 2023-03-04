@@ -200,9 +200,9 @@ class Git implements IF_UNIT
 	 * @created    2023-02-05
 	 * @param      string      $remote_name
 	 * @param      string      $branch_name
-	 * @return     boolean
+	 * @return     boolean|string
 	 */
-	static function Rebase(string $remote_name, string $branch_name):bool
+	static function Rebase(string $remote_name, string $branch_name)
 	{
 		//	...
 		if(!self::Switch($branch_name) ){
@@ -210,7 +210,10 @@ class Git implements IF_UNIT
 		}
 
 		//	...
+		/*
 		$commit_id  = self::CommitID($branch_name);
+		*/
+		$commit_id  = `git rev-parse {$remote_name}/{$branch_name}`;
 		$current_id = self::CurrentCommitID();
 
 		//	...
