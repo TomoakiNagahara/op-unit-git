@@ -220,7 +220,6 @@ class Git implements IF_UNIT
 
 		//	...
 		$result = `git rebase {$remote_name}/{$branch_name} 2>&1`;
-		D($result);
 
 		//	...
 		return $result;
