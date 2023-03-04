@@ -125,7 +125,7 @@ class Git implements IF_UNIT
 	/** Get branch name list
 	 *
 	 * <pre>
-	 * Git::Remote()->List();
+	 * Git::Branch()->List();
 	 * </pre>
 	 *
 	 * @deprecated 2023-02-17
@@ -134,19 +134,7 @@ class Git implements IF_UNIT
 	 */
 	static function Branches():array
 	{
-		//	...
-		$return = [];
-		//	...
-		foreach( explode("\n", `git branch`) as $branch ){
-			//	...
-			if(empty($branch)){
-				continue;
-			}
-			//	...
-			$return[] = substr($branch, 2);
-		}
-		//	...
-		return $return;
+		return self::Branch()->List();
 	}
 
 	/** Return Commit ID by branch name.
