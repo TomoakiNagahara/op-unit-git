@@ -147,7 +147,7 @@ class Git implements IF_UNIT
 	static function CommitID(string $branch_name) : string
 	{
 		//	...
-		$branches = self::Branches();
+		$branches = self::Branch()->List();
 		//	...
 		if( array_search($branch_name, $branches) === false ){
 			throw new Exception("This branch name is not exists. ($branch_name)");
