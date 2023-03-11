@@ -41,6 +41,18 @@ class Git implements IF_UNIT
 	 */
 	use OP_CORE, OP_CI;
 
+	/** Get git path.
+	 *
+	 */
+	static function Path():string
+	{
+		static $_path;
+		if(!$_path ){
+			$_path = include(__DIR__.'/include/search_path.php');
+		}
+		return $_path;
+	}
+
 	/** Get submodule config.
 	 *
 	 * @created    2023-01-02
