@@ -149,7 +149,7 @@ class Git implements IF_UNIT
 	 * @param      string      $remote
 	 * @return     string
 	 */
-	static function Fetch(string $remote=''):?string
+	static function Fetch(string $remote='')
 	{
 		return self::Remote()->Fetch($remote);
 	}
