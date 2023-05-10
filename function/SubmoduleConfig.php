@@ -55,7 +55,13 @@ function SubmoduleConfig(string $file_path='.gitmodules') : array
 
 		//	path, url, branch
 		for($i=0; $i<3; $i++){
-			list($key, $var) = explode("=", array_shift($source));
+            //  ...
+            if(!$line = array_shift($source) ){
+                continue;
+            }
+
+            //  ...
+			list($key, $var) = explode("=", $line);
 			$configs[$name][ trim($key) ] = trim($var);
 		}
 	}
