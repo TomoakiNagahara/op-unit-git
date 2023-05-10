@@ -49,6 +49,7 @@ function SubmoduleConfig(string $file_path='.gitmodules') : array
 	//	Parse the submodule settings.
 	$configs = [];
 	while( $line = array_shift($source) ){
+        /*
 		//	[submodule "asset/core"]
 		$name = substr($line, 12, -2);
 		$name = str_replace('/', '-', $name);
@@ -64,6 +65,16 @@ function SubmoduleConfig(string $file_path='.gitmodules') : array
 			list($key, $var) = explode("=", $line);
 			$configs[$name][ trim($key) ] = trim($var);
 		}
+        */
+        //  ...
+        $line = trim($line);
+        if( $line[0] === '[' ){
+            $name = substr($line, 12, -2);
+            $name = str_replace('/', '-', $name);
+        }else{
+            list($key, $var) = explode("=", $line);
+            $configs[$name][ trim($key) ] = trim($var);
+        }
 	}
 
 	//	...
