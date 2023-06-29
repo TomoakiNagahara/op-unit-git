@@ -181,8 +181,9 @@ class Git implements IF_UNIT
 			return true;
 		}
 
-		//	...
-		$result = `git switch {$branch_name} 2>&1`;
+		//	`switch` is 2.23.0 later.
+		$command = true ? 'checkout':'switch';
+		$result  = `git {$command} {$branch_name} 2>&1`;
 
 		//	...
 		if( 0 !== strpos($result, "Switched to branch '{$branch_name}'") ){
