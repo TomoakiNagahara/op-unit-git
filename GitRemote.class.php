@@ -16,7 +16,7 @@ declare(strict_types=1);
 /** namespace
  *
  */
-namespace OP\UNIT\Git;
+namespace OP\UNIT\GIT;
 
 /** use
  *
