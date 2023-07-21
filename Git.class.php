@@ -239,7 +239,7 @@ class Git implements IF_UNIT
 	 */
 	static function Push(string $remote_name, string $branch_name, bool $force=false):string
 	{
-		//	...
+		//	Already pushed?
 		if( trim(`git rev-parse {$branch_name}`) === trim(`git rev-parse {$remote_name}/{$branch_name}`) ){
 			return '';
 		}
@@ -310,4 +310,22 @@ class Git implements IF_UNIT
 		//	...
 		return $_branch;
 	}
+
+    /** Get current git cli version.
+     *
+     * @created     2023-07-13
+     * @return      string      $version
+     */
+    static function Version():string
+    {
+        static $_version;
+        if(!$_version ){
+            $_version = `git --version`;
+            /* @var $match array */
+            if( preg_match('|(\d+\.\d+\.\d+)|', $_version, $match) ){
+                $_version = $match[1];
+            }
+        }
+        return $_version;
+    }
 }
