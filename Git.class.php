@@ -311,6 +311,26 @@ class Git implements IF_UNIT
 		return $_branch;
 	}
 
+    /** Return GitStash instance.
+     *
+     * @created     2022-11-12
+     * @return     \OP\UNIT\GIT\GitStash
+     */
+    static function Stash() : \OP\UNIT\GIT\GitStash
+    {
+        //	...
+        require_once(__DIR__.'/GitStash.class.php');
+
+        //	...
+        static $_stash;
+        if(!$_stash ){
+            $_stash = new GIT\GitStash();
+        }
+
+        //	...
+        return $_stash;
+    }
+
     /** Get current git cli version.
      *
      * @created     2023-07-13
