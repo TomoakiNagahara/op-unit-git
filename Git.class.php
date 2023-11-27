@@ -207,10 +207,12 @@ class Git implements IF_UNIT
 	 */
 	static function Rebase(string $remote_name, string $branch_name)
 	{
+		/*
 		//	...
 		if(!self::Switch($branch_name) ){
 			return false;
 		}
+		*/
 
 		//	...
 		/*
