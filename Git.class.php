@@ -110,6 +110,7 @@ class Git implements IF_UNIT
 
 	/** Stash pop
 	 *
+	 * @deprecated	2023-11-27
 	 * @return bool
 	 */
 	static function Pop():bool
