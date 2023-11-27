@@ -40,6 +40,16 @@ class GitBranch implements IF_UNIT
 	 */
 	use OP_CORE, OP_CI;
 
+	/** Return current branch name.
+	 *
+	 * @created		2023-11-27
+	 * @return		string
+	 */
+	static function Current() : string
+	{
+		return trim(`git rev-parse --abbrev-ref HEAD 2>&1`);
+	}
+
 	/** Add branch repository.
 	 *
 	 * @created    2023-02-13
