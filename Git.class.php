@@ -257,12 +257,20 @@ class Git implements IF_UNIT
 
 	/** Get current branch name.
 	 *
+	 * <pre>
+	 * $current_branch_name = OP()->Unit('git')->Branch()->Current();
+	 * </pre>
+	 *
+	 * @deprecated 2023-11-27
 	 * @created    2023-01-06
 	 * @return     string
 	 */
 	static function CurrentBranch():string
 	{
+		/*
 		return trim(`git rev-parse --abbrev-ref HEAD 2>&1`);
+		*/
+		return self::Branch()->Current();
 	}
 
 	/** Get current commit ID.
