@@ -110,6 +110,10 @@ class Git implements IF_UNIT
 
 	/** Stash pop
 	 *
+	 * <pre>
+	 * Git::Stash()->Pop();
+	 * </pre>
+	 *
 	 * @deprecated	2023-11-27
 	 * @return bool
 	 */
@@ -127,6 +131,11 @@ class Git implements IF_UNIT
 
 	/** Fetch repository.
 	 *
+	 * <pre>
+	 * Git::Remote()->Fetch($remote='origin');
+	 * </pre>
+	 *
+	 * @deprecated	2023-12-24
 	 * @created    2023-02-13
 	 * @param      string      $remote
 	 * @return     string
