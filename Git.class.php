@@ -173,7 +173,8 @@ class Git implements IF_UNIT
 		$branches = self::Branch()->List();
 		//	...
 		if( array_search($branch_name, $branches) === false ){
-			throw new Exception("This branch name is not exists. ($branch_name)");
+			OP()->Notice("This branch name is not exists. ($branch_name)");
+			return '';
 		}
 		//	...
 		return trim(`git rev-parse {$branch_name}`);
