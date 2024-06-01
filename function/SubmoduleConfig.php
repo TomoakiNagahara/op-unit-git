@@ -50,7 +50,10 @@ function SubmoduleConfig(string $file_path='.gitmodules') : array
 	$configs = [];
 	while( $line = array_shift($source) ){
         //  ...
-        $line = trim($line);
+		if(!$line = trim($line) ){
+			continue;
+		}
+		//	...
         if( $line[0] === '[' ){
             $name = substr($line, 12, -2);
             $name = str_replace('/', '-', $name);
