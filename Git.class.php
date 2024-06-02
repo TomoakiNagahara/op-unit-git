@@ -252,6 +252,11 @@ class Git implements IF_UNIT
 		$result = `git rebase {$remote_name}/{$branch_name} 2>&1`;
 
 		//	...
+		if(!$result ){
+			`git rebase --abort`;
+		}
+
+		//	...
 		return $result;
 	}
 
