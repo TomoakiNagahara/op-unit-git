@@ -227,7 +227,7 @@ class Git implements IF_UNIT
 	 * @param      string      $branch_name
 	 * @return     boolean|string
 	 */
-	static function Rebase(string $remote_name, string $branch_name)
+	static function Rebase(string $remote_name, string $branch_name) : bool
 	{
 		/*
 		//	...
