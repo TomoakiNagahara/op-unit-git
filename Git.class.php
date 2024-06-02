@@ -252,12 +252,16 @@ class Git implements IF_UNIT
 		$result = `git rebase {$remote_name}/{$branch_name} 2>&1`;
 
 		//	...
-		if(!$result ){
+		$io = strpos(' '.$result, 'Successfully rebased and updated') ? true: false;
+
+		//	...
+		if(!$io ){
+			echo $result;
 			`git rebase --abort`;
 		}
 
 		//	...
-		return $result;
+		return $io;
 	}
 
 	/** Push of branch
