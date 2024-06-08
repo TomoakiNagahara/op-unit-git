@@ -254,7 +254,9 @@ class Git implements IF_UNIT
 	static function Push(string $remote_name, string $branch_name, bool $force=false):string
 	{
 		//	Already pushed?
-		if( trim(`git rev-parse {$branch_name}`) === trim(`git rev-parse {$remote_name}/{$branch_name}`) ){
+		$current = `git rev-parse {$branch_name}`                ?? '';
+		$forward = `git rev-parse {$remote_name}/{$branch_name}` ?? '';
+		if( trim($current) === trim($forward) ){
 			return '';
 		}
 
