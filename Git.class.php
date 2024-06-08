@@ -252,22 +252,17 @@ class Git implements IF_UNIT
 		$result = `git rebase {$remote_name}/{$branch_name} 2>&1`;
 
 		//	...
-		if( $result === "Current branch {$branch_name} is up to date.\n" ){
+		if( strpos($result, "Current branch {$branch_name} is up to date.\n") !== false ){
 			$io = true;
 		}else if( strpos($result, 'Successfully rebased and updated') !== false ){
 			$io = true;
 		}else{
-			$io = false;
-		}
-
-		//	...
-		if(!$io ){
+			echo "\n REBASE TROUBLE??? \n";
 			echo $result;
-			`git rebase --abort`;
 		}
 
 		//	...
-		return $io;
+		return $io ?? false;
 	}
 
 	/** Push of branch
