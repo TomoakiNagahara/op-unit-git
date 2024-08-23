@@ -101,4 +101,29 @@ class GitRemote implements IF_UNIT
 		//	...
 		return (array_search($name, $list) !== false) ? true: false;
 	}
+
+	/** Fetch
+	 *
+	 * @created    2024-08-23
+	 * @param      string     $remote
+	 * @return     boolean
+	 */
+	static function Fetch(string $remote='')
+	{
+		//	...
+		if( $remote ){
+			//	...
+			if( false === array_search( $remote, self::List() ) ){
+				OP()->Notice("This remote name is not found.`{$remote}`");
+				return false;
+			}
+		}
+
+		/* @var $output array */
+		/* @var $status int   */
+		exec("git fetch {$remote} 2>&1", $output, $status);
+		if( $status ){
+			echo join("\n", $output)."\n";
+		}
+	}
 }
