@@ -257,8 +257,9 @@ class Git implements IF_UNIT
 		}else if( strpos($result, 'Successfully rebased and updated') !== false ){
 			$io = true;
 		}else{
-			echo "\n REBASE TROUBLE??? \n";
 			echo $result;
+			echo "Please check branch name: {$branch_name}\n";
+			echo "Current directory is : ".getcwd()."\n";
 		}
 
 		//	...
