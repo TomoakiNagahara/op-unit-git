@@ -44,6 +44,7 @@ function SubmoduleConfig(string $file_path='.gitmodules') : array
 	}
 
 	//	Parse submodule settings.
+	$file   = trim($file);
 	$source = explode("\n", $file);
 
 	//	Parse the submodule settings.
