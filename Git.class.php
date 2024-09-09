@@ -189,7 +189,7 @@ class Git implements IF_UNIT
 	static function Switch(string $branch_name):bool
 	{
 		//	...
-		if( self::CurrentBranch() === $branch_name ){
+		if( self::Branch()->Current() === $branch_name ){
 			return true;
 		}
 
