@@ -93,6 +93,10 @@ class Git implements IF_UNIT
 
 	/** Stash save
 	 *
+	 * <pre>
+	 * Git::Stash()->Save();
+	 * </pre>
+	 *
 	 * @deprecated	2023-11-27
 	 * @return bool
 	 */
