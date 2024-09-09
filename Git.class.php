@@ -148,22 +148,6 @@ class Git implements IF_UNIT
 		return $io;
 	}
 
-	/** Fetch repository.
-	 *
-	 * <pre>
-	 * Git::Remote()->Fetch($remote='origin');
-	 * </pre>
-	 *
-	 * @deprecated	2023-12-24
-	 * @created    2023-02-13
-	 * @param      string      $remote
-	 * @return     string
-	 */
-	static function Fetch(string $remote=''):?string
-	{
-		return self::Remote()->Fetch($remote);
-	}
-
 	/** Return Commit ID by branch name.
 	 *
 	 * @see https://prograshi.com/general/git/show-ref-and-rev-parse/
