@@ -46,11 +46,16 @@ class Git implements IF_UNIT
 	 */
 	static function Path():string
 	{
+		/*
 		static $_path;
 		if(!$_path ){
 			$_path = include(__DIR__.'/include/search_path.php');
 		}
 		return $_path;
+		*/
+
+		//	...
+		return include(__DIR__.'/include/search_path.php');
 	}
 
 	/** Get submodule config.
