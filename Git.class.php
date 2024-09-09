@@ -261,16 +261,20 @@ class Git implements IF_UNIT
 		}
 
 		//	...
-		$result = `git rebase {$remote_name}/{$branch_name} 2>&1`;
+		$result = trim(`git rebase {$remote_name}/{$branch_name} 2>&1` ?? '');
 
 		//	...
-		if( strpos($result, "Current branch {$branch_name} is up to date.\n") !== false ){
+		if( strpos($result, "Current branch {$branch_name} is up to date.") === 0 ){
 			$io = true;
-		}else if( strpos($result, 'Successfully rebased and updated') !== false ){
+		}else if( strpos($result, 'Successfully rebased and updated') === 0 ){
 			$io = true;
 		}else{
-			echo $result;
-			echo "Please check branch name: {$branch_name}\n";
+			if( strpos($result, "fatal: ambiguous argument '{$remote_name}/{$branch_name}': unknown revision or path not in the working tree.") === 0 ){
+				//	...
+			}else{
+				echo $result;
+			}
+			echo "Please check branch name: {$remote_name}/{$branch_name}\n";
 			echo "Current directory is : ".getcwd()."\n";
 		}
 
