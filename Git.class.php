@@ -142,7 +142,7 @@ class Git implements IF_UNIT
 	 */
 	static function Fetch(string $remote=''):?string
 	{
-		return `git fetch {$remote}`;
+		return self::Remote()->Fetch($remote);
 	}
 
 	/** Get branch name list
