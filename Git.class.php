@@ -96,27 +96,6 @@ class Git implements IF_UNIT
 		return $io;
 	}
 
-	/** Stash save
-	 *
-	 * <pre>
-	 * Git::Stash()->Save();
-	 * </pre>
-	 *
-	 * @deprecated	2023-11-27
-	 * @return bool
-	 */
-	static function Save():bool
-	{
-		//	...
-		$result = `git stash save 2>&1`;
-		//	...
-		if(!$io = strpos(' '.$result, 'No local changes to save') ? true: false ){
-			$io = strpos(' '.$result, 'Saved working directory and index state WIP') ? true: false ;
-		}
-		//	...
-		return $io;
-	}
-
 	/** Return Commit ID by branch name.
 	 *
 	 * @see https://prograshi.com/general/git/show-ref-and-rev-parse/
