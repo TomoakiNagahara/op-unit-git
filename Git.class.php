@@ -227,8 +227,20 @@ class Git implements IF_UNIT
 	 * @param      string      $branch_name
 	 * @return     boolean|string
 	 */
-	static function Rebase(string $remote_name, string $branch_name) : bool
+	static function Rebase(string $remote_name, string $branch_name) : ?bool
 	{
+		//	...
+		if( empty($remote_name) ){
+			OP()->Notice('remote name is empty.');
+			return null;
+		}
+
+		//	...
+		if( empty($branch_name) ){
+			OP()->Notice('branch name is empty.');
+			return null;
+		}
+
 		/*
 		//	...
 		if(!self::Switch($branch_name) ){
