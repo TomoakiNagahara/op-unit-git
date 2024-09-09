@@ -117,27 +117,6 @@ class Git implements IF_UNIT
 		return $io;
 	}
 
-	/** Stash pop
-	 *
-	 * <pre>
-	 * Git::Stash()->Pop();
-	 * </pre>
-	 *
-	 * @deprecated	2023-11-27
-	 * @return bool
-	 */
-	static function Pop():bool
-	{
-		//	...
-		$result = `git stash pop 2>&1`;
-		//	...
-		if(!$io = strpos(' '.$result, 'No stash entries found.') ? true: false ){
-			$io = strpos(' '.$result, 'Dropped refs/stash') ? true: false ;
-		}
-		//	...
-		return $io;
-	}
-
 	/** Return Commit ID by branch name.
 	 *
 	 * @see https://prograshi.com/general/git/show-ref-and-rev-parse/
