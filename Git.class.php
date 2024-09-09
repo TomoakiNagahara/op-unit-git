@@ -154,21 +154,6 @@ class Git implements IF_UNIT
 		return self::Remote()->Fetch($remote);
 	}
 
-	/** Get branch name list
-	 *
-	 * <pre>
-	 * Git::Branch()->List();
-	 * </pre>
-	 *
-	 * @deprecated 2023-02-17
-	 * @created    2023-02-05
-	 * @return     array       $branches
-	 */
-	static function Branches():array
-	{
-		return self::Branch()->List();
-	}
-
 	/** Return Commit ID by branch name.
 	 *
 	 * @see https://prograshi.com/general/git/show-ref-and-rev-parse/
