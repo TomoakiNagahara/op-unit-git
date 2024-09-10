@@ -268,6 +268,8 @@ class Git implements IF_UNIT
 			$io = true;
 		}else if( strpos($result, 'Successfully rebased and updated') === 0 ){
 			$io = true;
+		}else if( strpos($result, 'Created autostash: ') === 0 and strpos($result, "Current branch {$branch_name} is up to date.") === 0 ){
+			$io = true;
 		}else{
 			echo "\n";
 			echo "Please check branch name: {$remote_name}/{$branch_name}\n";
