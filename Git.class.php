@@ -264,11 +264,9 @@ class Git implements IF_UNIT
 		$result = trim(`git rebase {$remote_name}/{$branch_name} 2>&1` ?? '');
 
 		//	...
-		if( strpos($result, "Current branch {$branch_name} is up to date.") === 0 ){
+		if( strpos($result, "Current branch {$branch_name} is up to date.") !== false ){
 			$io = true;
-		}else if( strpos($result, "Successfully rebased and updated refs/heads/{$branch_name}.") === 0 ){
-			$io = true;
-		}else if( strpos($result, 'Created autostash: ') === 0 and strpos($result, "Current branch {$branch_name} is up to date.") === 0 ){
+		}else if( strpos($result, "Successfully rebased and updated refs/heads/{$branch_name}.") !== false ){
 			$io = true;
 		}else{
 			echo "\n";
