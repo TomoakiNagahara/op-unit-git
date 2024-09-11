@@ -266,7 +266,7 @@ class Git implements IF_UNIT
 		//	...
 		if( strpos($result, "Current branch {$branch_name} is up to date.") === 0 ){
 			$io = true;
-		}else if( strpos($result, 'Successfully rebased and updated') === 0 ){
+		}else if( strpos($result, "Successfully rebased and updated refs/heads/{$branch_name}.") === 0 ){
 			$io = true;
 		}else if( strpos($result, 'Created autostash: ') === 0 and strpos($result, "Current branch {$branch_name} is up to date.") === 0 ){
 			$io = true;
