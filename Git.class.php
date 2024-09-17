@@ -332,6 +332,26 @@ class Git implements IF_UNIT
 		return $_branch;
 	}
 
+	/** Return GitCommit instance.
+	 *
+	 * @created    2024-09-16
+	 * @return    \OP\UNIT\GIT\GitCommit
+	 */
+	static function Commit() : \OP\UNIT\GIT\GitCommit
+	{
+		//	...
+		require_once(__DIR__.'/GitCommit.class.php');
+
+		//	...
+		static $_commit;
+		if(!$_commit ){
+			$_commit = new GIT\GitCommit();
+		}
+
+		//	...
+		return $_commit;
+	}
+
     /** Return GitStash instance.
      *
      * @created     2022-11-12
