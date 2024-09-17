@@ -249,22 +249,28 @@ class Git implements IF_UNIT
 	 * @param      string      $remote_name
 	 * @param      string      $branch_name
 	 * @param      boolean     $force
-	 * @return     string
+	 * @return     boolean     true is success
 	 */
-	static function Push(string $remote_name, string $branch_name, bool $force=false):string
+	static function Push(string $remote_name, string $branch_name, bool $force=false) : bool
 	{
 		//	Already pushed?
 		$current = `git rev-parse {$branch_name}`                ?? '';
 		$forward = `git rev-parse {$remote_name}/{$branch_name}` ?? '';
 		if( trim($current) === trim($forward) ){
-			return '';
+			return true;
 		}
 
 		//	...
 		$force = $force ? '-f': '';
 
+		/* @var $output array */
+		/* @var $status int   */
+		$comand = "git push {$remote_name} {$branch_name} {$force} 2>&1";
+		$result = exec($comand, $output, $status);
+		$result = join("\n", $output);
+
 		//	...
-		return trim(`git push {$remote_name} {$branch_name} {$force} 2>&1`);
+		return $status ? false: true;
 	}
 
 	/** Get current branch name.
