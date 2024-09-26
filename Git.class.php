@@ -188,24 +188,27 @@ class Git implements IF_UNIT
 	 */
 	static function Switch(string $branch_name):bool
 	{
-		//	...
+		//	Already switched current branch.
 		if( self::Branch()->Current() === $branch_name ){
 			return true;
 		}
 
 		//	`switch` is 2.23.0 later.
-		$command = true ? 'checkout':'switch';
-		$result  = `git {$command} {$branch_name} 2>&1`;
+		$command = (self::Version() < 2.23) ? 'checkout':'switch';
+		$command = "git {$command} {$branch_name} 2>&1";
+		/* @var $output array */
+		/* @var $status int   */
+		exec($command, $output, $status);
 
 		//	...
-		if( 0 !== strpos($result, "Switched to branch '{$branch_name}'") ){
-			D('Git switch was failed.');
-			echo($result);
-			return false;
+		if( $status ){
+			$path = getcwd();
+			$path = OP()->MetaPath($path);
+			echo $path .' - '. join("\n", $output)."\n";
 		}
 
 		//	...
-		return true;
+		return $status ? false: true;
 	}
 
 	/** Rebase
