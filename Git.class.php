@@ -252,6 +252,16 @@ class Git implements IF_UNIT
 		/*
 		$commit_id  = self::CommitID($branch_name);
 		*/
+
+		//	...
+		if(!self::Branch()->isExists($branch_name) ){
+			$path = OP()->MetaPath( getcwd() );
+			echo "\n";
+			echo "This branch name is not exist: branch={$branch_name}, path={$path}\n";
+			return null;
+		}
+
+		//	...
 		$commit_id  = `git rev-parse {$remote_name}/{$branch_name}`;
 		$current_id = self::CurrentCommitID();
 
