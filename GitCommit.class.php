@@ -40,6 +40,29 @@ class GitCommit implements IF_UNIT
 	 */
 	use OP_CORE, OP_CI;
 
+	/** Get Commit ID
+	 *
+	 * @created    2024-10-06
+	 * @param      string     $branch
+	 * @param      string     $remote
+	 * @return     string     $commit_id
+	 */
+	static function ID(string $branch='', string $remote='') : string
+	{
+		//	...
+		if( $remote ){
+			return trim(`git rev-parse {$remote}/{$branch} 2>&1` ?? '');
+		}
+
+		//	...
+		if( $branch ){
+			return trim(`git rev-parse {$branch} 2>&1` ?? '');
+		}
+
+		//	...
+		return trim(`git show --format='%H' --no-patch 2>&1` ?? '');
+	}
+
 	/** Pick
 	 *
 	 * @created    2024-09-16
