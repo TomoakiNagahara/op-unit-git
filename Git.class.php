@@ -333,12 +333,20 @@ class Git implements IF_UNIT
 
 	/** Get current commit ID.
 	 *
+	 * <pre>
+	 * OP()->Unit()->Git()->Commit()->ID();
+	 * </pre>
+	 *
+	 * @deprecated 2024-10-06
 	 * @created    2023-01-06
 	 * @return     string
 	 */
 	static function CurrentCommitID():string
 	{
+		/*
 		return trim(`git show --format='%H' --no-patch 2>&1`);
+		*/
+		return self::Commit()->ID();
 	}
 
 	/** Return GitRemote instance.
