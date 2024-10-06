@@ -263,6 +263,7 @@ class Git implements IF_UNIT
 
 		//	...
 		$commit_id  = `git rev-parse {$remote_name}/{$branch_name}`;
+		$commit_id  = trim($commit_id ?? '');
 		$current_id = self::CurrentCommitID();
 
 		//	...
