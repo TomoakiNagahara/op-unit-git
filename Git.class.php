@@ -241,18 +241,6 @@ class Git implements IF_UNIT
 			return null;
 		}
 
-		/*
-		//	...
-		if(!self::Switch($branch_name) ){
-			return false;
-		}
-		*/
-
-		//	...
-		/*
-		$commit_id  = self::CommitID($branch_name);
-		*/
-
 		//	...
 		if(!self::Branch()->isExists($branch_name) ){
 			$path = OP()->MetaPath( getcwd() );
