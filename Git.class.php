@@ -242,10 +242,9 @@ class Git implements IF_UNIT
 		}
 
 		//	...
-		if(!self::Branch()->isExists($branch_name) ){
-			$path = OP()->MetaPath( getcwd() );
-			echo "\n";
-			echo "This branch name is not exist: branch={$branch_name}, path={$path}\n";
+		if( `git show-ref refs/remotes/{$remote_name}/{$branch_name}` ){
+			//	Return commit id
+		}else{
 			return null;
 		}
 
