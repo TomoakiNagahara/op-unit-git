@@ -306,6 +306,7 @@ class Git implements IF_UNIT
 		/* @var $output array */
 		/* @var $status int   */
 		$comand = "git push {$remote_name} {$branch_name} {$force} 2>&1";
+		$result = '';
 		$result = exec($comand, $output, $status);
 		$result = join("\n", $output);
 
