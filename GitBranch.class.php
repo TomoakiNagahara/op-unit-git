@@ -133,4 +133,22 @@ class GitBranch implements IF_UNIT
 		//	...
 		return (array_search($name, $list) !== false) ? true: false;
 	}
+
+	/** Create new branch.
+	 *
+	 * @createed   2024-11-17
+	 * @param      string     $branch_name
+	 * @return     boolean
+	 */
+	static function Create(string $branch_name) : bool
+	{
+		/* @var array   $output */
+		/* @var integer $status */
+		$comand = "git branch {$branch_name} 2>&1";
+		exec($comand, $output, $status);
+		if( $output ){
+			echo join("\n", $output) . PHP_EOL;
+		}
+		return !$status;
+	}
 }
