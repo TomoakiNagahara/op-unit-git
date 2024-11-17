@@ -195,11 +195,16 @@ class Git implements IF_UNIT
 	 * @param      string      $branch_name
 	 * @return     boolean
 	 */
-	static function Switch(string $branch_name):bool
+	static function Switch(string $branch_name) : bool
 	{
 		//	Already switched current branch.
 		if( self::Branch()->Current() === $branch_name ){
 			return true;
+		}
+
+		//	Check if already exists.
+		if(!self::Branch()->isExists($branch_name) ){
+			self::Branch()->Create($branch_name);
 		}
 
 		//	`switch` is 2.23.0 later.
