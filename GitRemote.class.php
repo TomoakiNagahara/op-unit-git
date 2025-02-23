@@ -111,6 +111,9 @@ class GitRemote implements IF_UNIT
 	static function Fetch(string $remote='')
 	{
 		//	...
+		if( $remote === '--all'){
+			//	OK
+		}else
 		if( $remote ){
 			//	...
 			if( false === array_search( $remote, self::List() ) ){
