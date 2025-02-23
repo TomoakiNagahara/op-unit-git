@@ -311,7 +311,7 @@ class Git implements IF_UNIT
 	 * @param      string     &$result
 	 * @return     boolean     true is success
 	 */
-	static function Push(string $remote_name, string $branch_name, bool $force=false, ?string &$result='') : bool
+	static function Push(string $remote_name, string $branch_name, bool $force=false, string &$result='') : bool
 	{
 		//	Already pushed?
 		$current = `git rev-parse {$branch_name} 2>&1`                ?? '';
