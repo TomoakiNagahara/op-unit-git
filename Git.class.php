@@ -263,6 +263,20 @@ class Git implements IF_UNIT
 			return true;
 		}
 
+		/* @var $output array */
+		/* @var $status int   */
+		$comand = "git rebase {$remote_name}/{$branch_name} 2>&1";
+		exec($comand, $output, $status);
+
+		//	...
+		if( $status ){
+			echo PHP_EOL . join("\n", $output) . PHP_EOL;
+		}
+
+		//	...
+		return $status ? false: true;
+
+		/*
 		//	...
 		$result = trim(`git rebase {$remote_name}/{$branch_name} 2>&1` ?? '');
 
@@ -285,6 +299,7 @@ class Git implements IF_UNIT
 
 		//	...
 		return $io ?? false;
+		*/
 	}
 
 	/** Push of branch
