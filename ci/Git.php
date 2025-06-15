@@ -18,8 +18,8 @@ declare(strict_types=1);
  */
 namespace OP;
 
-//	...
-$ci = new CI();
+/* @var $ci \OP\UNIT\CI\CI_Config */
+$ci = OP::Unit('CI')::Config();
 
 //	SubmoduleConfig
 $args   = true;
@@ -47,4 +47,4 @@ $result =  null;
 $ci->Set('Push', $result, $args);
 
 //	...
-return $ci->GenerateConfig();
+return $ci->Get();
