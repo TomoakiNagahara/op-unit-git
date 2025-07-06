@@ -22,9 +22,9 @@ namespace OP\UNIT;
  *
  */
 use Exception;
-use OP\IF_UNIT;
 use OP\OP_CORE;
 use OP\OP_CI;
+use OP\IF_GIT;
 
 /** Git
  *
@@ -34,7 +34,7 @@ use OP\OP_CI;
  * @author     Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright  Tomoaki Nagahara All right reserved.
  */
-class Git implements IF_UNIT
+class Git implements IF_GIT
 {
 	/** use
 	 *
