@@ -72,7 +72,7 @@ class Git implements IF_GIT
 		require_once(__DIR__.'/function/SubmoduleConfig.php');
 
 		//	...
-		$file_path = OP()->MetaPath('git:/') . $file_name;
+		$file_path = OP()->Path('git:/') . $file_name;
 
 		//	...
 		return GIT\SubmoduleConfig($file_path);
