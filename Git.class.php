@@ -154,7 +154,7 @@ class Git implements IF_GIT
 		//	...
 		if( $status ){
 			$path = getcwd();
-			$path = OP()->MetaPath($path);
+			$path = OP()->Path($path);
 			echo $path .' - '. join("\n", $output)."\n";
 		}
 
