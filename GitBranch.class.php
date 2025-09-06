@@ -58,10 +58,15 @@ class GitBranch implements IF_UNIT
 	static function Current() : string
 	{
 		/*
-		return trim(`git rev-parse --abbrev-ref HEAD 2>&1`);
-		return trim(`git symbolic-ref --short HEAD 2>&1`);
+		$branch = `git rev-parse --abbrev-ref HEAD 2>&1`;
+		$branch = `git symbolic-ref --short HEAD 2>&1`;
 		*/
-		return trim(`git branch --show-current 2>&1`);
+		if(!$branch = `git branch --show-current 2>&1` ){
+			throw new \Exception("git branch was failed: " . getcwd());
+		}
+
+		//	...
+		return trim($branch);
 	}
 
 	/** Add branch repository.
