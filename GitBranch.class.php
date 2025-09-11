@@ -61,7 +61,10 @@ class GitBranch implements IF_UNIT
 		$branch = `git rev-parse --abbrev-ref HEAD 2>&1`;
 		$branch = `git symbolic-ref --short HEAD 2>&1`;
 		*/
-		if(!$branch = `git branch --show-current 2>&1` ){
+		$branch = `git branch --show-current 2>&1`;
+
+		//	...
+		if(!$branch ){
 			throw new \Exception("git branch was failed: " . getcwd());
 		}
 
