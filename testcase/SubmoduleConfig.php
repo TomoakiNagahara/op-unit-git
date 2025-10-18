@@ -18,5 +18,25 @@ declare(strict_types=1);
  */
 namespace OP;
 
-//	...
-D( OP()->Unit('Git')->SubmoduleConfig() );
+?>
+<section>
+	<h1>Show Git::SubmoduleConfig() result</h1>
+	<p>
+		Parse a <code>.gitmodules</code> file and return an associative array.<br/>
+		You can specify the file as follows:
+	</p>
+	<pre><code>OP()->Unit()->Git()->SubmoduleConfig('asset/core/.gitmodules')</code></pre>
+	<p>
+		Note that the path is always relative to the <b>git root</b>.
+	</p>
+
+	<h2>Default</h2>
+	<?php
+	D( OP()->Unit()->Git()->SubmoduleConfig() );
+	?>
+
+	<h2>asset/core</h2>
+	<?php
+	D( OP()->Unit()->Git()->SubmoduleConfig('asset/core/.gitmodules') );
+	?>
+</section>
