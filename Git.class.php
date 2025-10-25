@@ -58,6 +58,16 @@ class Git implements IF_UNIT
 		return include(__DIR__.'/include/search_path.php');
 	}
 
+	/** Return Git root path.
+	 *
+	 * @created    2023-01-02
+	 * @return     string
+	 */
+	static function Root() : string
+	{
+		return trim(`git rev-parse --show-superproject-working-tree` ?? '');
+	}
+
 	/** Get submodule config.
 	 *
 	 * @created    2023-01-02
