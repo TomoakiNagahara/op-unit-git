@@ -27,7 +27,7 @@ use Exception;
  *
  * @created    2023-01-02
  * @moved      2023-01-30  op-cd:/Git.class.php
- * @param      bool        $current
+ * @param      string      $file_path
  * @throws     Exception
  * @return     array
  */
