@@ -1,5 +1,5 @@
 <?php
-/** op-unit-git:/Git.class.php
+/**	op-unit-git:/Git.class.php
  *
  * @created    2023-01-30
  * @version    1.0
@@ -13,15 +13,14 @@
  */
 declare(strict_types=1);
 
-/** namespace
+/**	namespace
  *
  */
 namespace OP\UNIT;
 
-/** use
+/**	use
  *
  */
-use Exception;
 use OP\OP_CORE;
 use OP\OP_CI;
 use OP\IF_GIT;
@@ -68,21 +67,17 @@ class Git implements IF_GIT
 		return trim(`git rev-parse --show-superproject-working-tree` ?? '');
 	}
 
-	/** Get submodule config.
+	/**	Get submodule config.
 	 *
 	 * @created    2023-01-02
 	 * @moved      2023-01-30  op-cd:/Git.class.php
-	 * @param      bool        $current
-	 * @throws     Exception
+	 * @param      string      $file_path
 	 * @return     array
 	 */
-	static function SubmoduleConfig(string $file_name='.gitmodules') : array
+	static function SubmoduleConfig(string $file_path='.gitmodules') : array
 	{
 		//	...
 		require_once(__DIR__.'/function/SubmoduleConfig.php');
-
-		//	...
-		$file_path = OP()->Path('git:/') . $file_name;
 
 		//	...
 		return GIT\SubmoduleConfig($file_path);
