@@ -64,7 +64,14 @@ class Git implements IF_GIT
 	 */
 	static function Root() : string
 	{
-		return trim(`git rev-parse --show-superproject-working-tree` ?? '');
+		//	If it's in a submodule.
+		if(!$root = `git rev-parse --show-superproject-working-tree` ){
+			//	Not in a submodule.
+			$root = `git rev-parse --show-toplevel`;
+		}
+
+		//	If it is null, an error occurs.
+		return trim($root);
 	}
 
 	/**	Get submodule config.
