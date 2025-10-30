@@ -65,5 +65,13 @@ function SubmoduleConfig(string $file_path='.gitmodules') : array
 	}
 
 	//	...
+	foreach( $configs as $name => $config ){
+		//	...
+		if( file_exists( $config['path'].'/.gitmodules')  ){
+			$configs[$name]['submodule'] = 1;
+		}
+	}
+
+	//	...
 	return $configs;
 }
