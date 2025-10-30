@@ -1,19 +1,19 @@
 <?php
-/** op-unit-git:/testcase/SubmoduleConfig.class.php
+/**	op-unit-git:/testcase/SubmoduleConfig.class.php
  *
  * @created    2023-01-30
  * @version    1.0
  * @package    op-unit-git
- * @author     Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @author     Tomoaki Nagahara
  * @copyright  Tomoaki Nagahara All right reserved.
  */
 
- /** Declare strict
+/**	Declare strict
  *
  */
 declare(strict_types=1);
 
-/** namespace
+/**	namespace
  *
  */
 namespace OP;
