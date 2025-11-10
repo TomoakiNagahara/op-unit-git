@@ -35,12 +35,14 @@ function SubmoduleConfig(string $file_path='.gitmodules') : array
 {
 	//	Get submodule settings.
 	if(!file_exists($file_path) ){
-		throw new Exception("This file does not exist. ($file_path)");
+		$path = getcwd()."/{$file_path}";
+		throw new Exception("This file does not exist: $path");
 	}
 
 	//	Get submodule settings from file.
 	if(!$file = file_get_contents($file_path) ){
-		throw new Exception("Could not read this file. ($file_path)");
+		$path = getcwd()."/{$file_path}";
+		throw new Exception("Could not read this file: $path");
 	}
 
 	//	Parse submodule settings.
