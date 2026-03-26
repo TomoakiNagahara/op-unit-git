@@ -35,6 +35,12 @@ function SubmoduleConfig(string $file_path='.gitmodules') : array
 {
 	//	Get submodule settings.
 	if(!file_exists($file_path) ){
+		//	...
+		if( $file_path === '.gitmodules' ){
+			return [];
+		}
+
+		//	...
 		$path = getcwd()."/{$file_path}";
 		throw new Exception("This file does not exist: $path");
 	}
