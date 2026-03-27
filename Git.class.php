@@ -91,7 +91,7 @@ class Git implements IF_GIT
 	static function Status():bool
 	{
 		//	...
-		$result = `git status 2>&1`;
+		$result = shell_exec('git status 2>&1');
 
 		//	...
 		if(!$io = strpos(' '.$result, 'nothing to commit, working tree clean') ? true: false ){
