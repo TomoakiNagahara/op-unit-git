@@ -96,7 +96,7 @@ class GitBranch implements IF_UNIT
 		return shell_exec('git branch rm {$name}');
 	}
 
-	/** Rename branch repository.
+	/**	Rename branch repository.
 	 *
 	 * @created    2023-02-13
 	 * @param      string      $from
@@ -105,7 +105,7 @@ class GitBranch implements IF_UNIT
 	 */
 	static function Rename(string $from, string $to)
 	{
-		return `git branch rename {$from} {$to}`;
+		return shell_exec('git branch rename {$from} {$to}');
 	}
 
 	/** Return branch repository name list.
