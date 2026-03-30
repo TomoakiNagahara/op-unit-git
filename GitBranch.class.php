@@ -72,7 +72,7 @@ class GitBranch implements IF_UNIT
 		return trim($branch);
 	}
 
-	/** Add branch repository.
+	/**	Add branch repository.
 	 *
 	 * @created    2023-02-13
 	 * @param      string      $name
@@ -81,7 +81,7 @@ class GitBranch implements IF_UNIT
 	 */
 	static function Add(string $name, string $url)
 	{
-		return `git branch add {$name} $url`;
+		return shell_exec('git branch add {$name} $url');
 	}
 
 	/** Delete branch repository.
