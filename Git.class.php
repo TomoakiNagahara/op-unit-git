@@ -257,8 +257,8 @@ class Git implements IF_GIT
 	static function Push(string $remote_name, string $branch_name, bool $force=false, ?string &$result='') : bool
 	{
 		//	Already pushed?
-		$current = `git rev-parse {$branch_name} 2>&1`                ?? '';
-		$forward = `git rev-parse {$remote_name}/{$branch_name} 2>&1` ?? '';
+		$current = self::CommitID("{$branch_name}");
+		$forward = self::CommitID("{$remote_name}/{$branch_name}");
 		if( trim($current) === trim($forward) ){
 			return true;
 		}
