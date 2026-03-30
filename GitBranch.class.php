@@ -40,14 +40,14 @@ class GitBranch implements IF_UNIT
 	 */
 	use OP_CORE, OP_CI;
 
-	/** Return main branch name.
+	/**	Return main branch name.
 	 *
 	 * @created		2023-11-29
 	 * @return		string
 	 */
 	static function Main() : string
 	{
-		return trim(`git remote show origin | grep 'HEAD branch' | cut -d' ' -f5 2>&1`);
+		return trim( shell_exec("git remote show origin | grep 'HEAD branch' | cut -d' ' -f5 2>&1") );
 	}
 
 	/**	Return current branch name.
