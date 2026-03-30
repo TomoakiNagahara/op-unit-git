@@ -111,15 +111,25 @@ class Git implements IF_GIT
 	 */
 	static function CommitID(string $branch_name) : string
 	{
+		//	White list of character.
+		if(!preg_match('/^[-_0-9a-zA-Z\/\.]+$/', $branch_name) ){
+			OP()->Notice("Invalid branch name: ($branch_name)");
+			return '';
+		}
+
 		//	...
-		$branches = self::Branch()->List();
-		//	...
-		if( array_search($branch_name, $branches) === false ){
+		$branch_name = escapeshellarg($branch_name);
+
+		/* @var $temp array   */
+		/* @var $code integer */
+		exec("git rev-parse --verify --quiet {$branch_name } 2>&1", $temp, $code);
+		if( $code !== 0 ){
 			OP()->Notice("This branch name is not exists. ($branch_name)");
 			return '';
 		}
+
 		//	...
-		return trim(`git rev-parse {$branch_name}`);
+		return trim( shell_exec("git rev-parse {$branch_name}") );
 	}
 
 	/** Switch to branch
