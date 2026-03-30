@@ -40,7 +40,7 @@ class GitCommit implements IF_UNIT
 	 */
 	use OP_CORE, OP_CI;
 
-	/** Get Commit ID
+	/**	Get Commit ID
 	 *
 	 * @created    2024-10-06
 	 * @param      string     $branch
@@ -51,16 +51,16 @@ class GitCommit implements IF_UNIT
 	{
 		//	...
 		if( $remote ){
-			return trim(`git rev-parse {$remote}/{$branch} 2>&1` ?? '');
+			return trim( shell_exec('git rev-parse {$remote}/{$branch} 2>&1') ?? '');
 		}
 
 		//	...
 		if( $branch ){
-			return trim(`git rev-parse {$branch} 2>&1` ?? '');
+			return trim( shell_exec('git rev-parse {$branch} 2>&1') ?? '');
 		}
 
 		//	...
-		return trim(`git show --format='%H' --no-patch 2>&1` ?? '');
+		return trim( shell_exec('git show --format="%H" --no-patch 2>&1') ?? '');
 	}
 
 	/** Pick
