@@ -189,15 +189,15 @@ class Git implements IF_GIT
 			return null;
 		}
 
-		//	...
-		if( `git show-ref refs/remotes/{$remote_name}/{$branch_name}` ){
+		//	The purpose of this process should be noted in the comments.
+		if( shell_exec("git show-ref refs/remotes/{$remote_name}/{$branch_name}") ){
 			//	Return commit id
 		}else{
 			return null;
 		}
 
 		//	...
-		$commit_id  = `git rev-parse {$remote_name}/{$branch_name}`;
+		$commit_id  = self::CommitID("{$remote_name}/{$branch_name}");
 		$commit_id  = trim($commit_id ?? '');
 		$current_id = self::Commit()->ID();
 
