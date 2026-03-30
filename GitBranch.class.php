@@ -108,7 +108,7 @@ class GitBranch implements IF_UNIT
 		return shell_exec('git branch rename {$from} {$to}');
 	}
 
-	/** Return branch repository name list.
+	/**	Return branch repository name list.
 	 *
 	 * @created    2023-02-13
 	 * @return     string
@@ -118,7 +118,7 @@ class GitBranch implements IF_UNIT
 		//	...
 		$return = [];
 		//	...
-		foreach( explode("\n", `git branch`) as $branch ){
+		foreach( explode("\n", shell_exec('git branch')) as $branch ){
 			//	...
 			if(empty($branch)){
 				continue;
