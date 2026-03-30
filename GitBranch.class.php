@@ -84,7 +84,7 @@ class GitBranch implements IF_UNIT
 		return shell_exec('git branch add {$name} $url');
 	}
 
-	/** Delete branch repository.
+	/**	Delete branch repository.
 	 *
 	 * @created    2023-02-13
 	 * @param      string      $name
@@ -93,7 +93,7 @@ class GitBranch implements IF_UNIT
 	 */
 	static function Delete(string $name)
 	{
-		return `git branch rm {$name}`;
+		return shell_exec('git branch rm {$name}');
 	}
 
 	/** Rename branch repository.
