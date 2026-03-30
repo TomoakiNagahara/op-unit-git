@@ -384,7 +384,7 @@ class Git implements IF_GIT
     {
         static $_version;
         if(!$_version ){
-            $_version = `git --version`;
+            $_version = shell_exec('git --version');
             /* @var $match array */
             if( preg_match('|(\d+\.\d+\.\d+)|', $_version, $match) ){
                 $_version = $match[1];
