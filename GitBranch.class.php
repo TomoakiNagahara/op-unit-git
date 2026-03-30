@@ -50,7 +50,7 @@ class GitBranch implements IF_UNIT
 		return trim(`git remote show origin | grep 'HEAD branch' | cut -d' ' -f5 2>&1`);
 	}
 
-	/** Return current branch name.
+	/**	Return current branch name.
 	 *
 	 * @created		2023-11-27
 	 * @return		string
@@ -61,7 +61,7 @@ class GitBranch implements IF_UNIT
 		$branch = `git rev-parse --abbrev-ref HEAD 2>&1`;
 		$branch = `git symbolic-ref --short HEAD 2>&1`;
 		*/
-		$branch = `git branch --show-current 2>&1`;
+		$branch = shell_exec('git branch --show-current 2>&1');
 
 		//	...
 		if(!$branch ){
