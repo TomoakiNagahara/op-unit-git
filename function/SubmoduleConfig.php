@@ -47,8 +47,10 @@ function SubmoduleConfig(string $file_path='.gitmodules') : array
 
 	//	Get submodule settings from file.
 	if(!$file = file_get_contents($file_path) ){
+		if( $file === false){
 		$path = getcwd()."/{$file_path}";
 		throw new Exception("Could not read this file: $path");
+		}
 	}
 
 	//	Parse submodule settings.
